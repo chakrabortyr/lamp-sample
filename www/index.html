@@ -19,13 +19,23 @@
       <h1><b>Blabber</b></h1>
       <h4><i>A thought experiment in Microblogging...</i></h4>
       
-      <div class="container" id="blogForm">
-         <form action="post.php" method="post">
+      <div class="container" id="blogContainer">
+         <form id="frm">
             <TextArea name="blogEntry" id="blogEntry" cols="30" rows="10" maxlength="400" wrap="soft">
             </TextArea>
             <br>
             <input type="submit" class="btn btn-default" value="Blab!">
          </form>
       </div>
+		<script>
+			$("#frm").submit(function() {
+				var text = $("#blogEntry").val();
+				$.ajax({
+					url: "post.php",
+					method: POST,
+					data: text
+				});
+			});
+		</script>
    </body>
 </html>
